@@ -1,0 +1,407 @@
+/*
+Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
+które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
+Dlatego popularną praktyką jest tworzenie tzw. resetów,
+czyli plików CSS zawierających reguły, które nadpisują te wartości,
+aby były one jednolite niezalenie od przeglądarki.
+
+Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./images/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ZAGADNIENIE PONADPROGRAMOWE
+
+Rekomendowany zestaw właściwości, które pozwalają na ukrycie tekstu w taki sposób,
+że będzie niewidoczny do standardowego użytkownika, a czytniki ekranowe wciąż będą go czytać.
+
+Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
+*/
+.screen-reader-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*
+Lewy margines ustawiony na kontenerze z główną zawartością strony sprawia,
+że nie będzie ona nachodzić na nagłówek i stopkę niezależnie od pozycji paska przewijania.
+Na projekcie graficznym sekcja menu ma szerokość około 170px i jest oddalona od krawędzi ekranu
+o 50px, więc można założyć, że 220px marginesu będzie wartością stosunkowo bezpieczną.
+Z kolei spady (padding) nadane na kontener wyznaczają minimalną odległość, na jaką będzie oddalona
+treść strony od otaczających ją granic kontenera (wartość "0 10%" jest
+skrótem od padding-top: 0, padding-bottom: 0, padding-left: 10%, padding-right: 10%).
+Właściwość "text-align: right" przykleja zawartość do prawej strony
+(oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
+*/
+
+.page-content {
+    margin-left: 220px;
+    padding: 0 10%;
+    text-align: right;
+}
+
+/*
+Projekt graficzny zakłada, że każda sekcja strony będzie wypełniać całą wysokość okna przeglądarki
+lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym rozwiązaniem
+będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
+która wymusza wysokość elementu na zadaną wartość lub wyższą.
+*/
+
+.content-section {
+    min-height: 100vh;
+}
+
+/*
+Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
+że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
+w tej samej pozycji względem okna przeglądarki.
+Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
+*/
+.page-header {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+}
+
+/* header */
+
+.page-navigation__item:first-child>a {
+    opacity: 1;
+}
+
+.page-navigation__item {
+    padding-top: 13px;
+}
+
+.page-navigation__item>a {
+    color: #EF008E;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 6.7px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.page-navigation__item:hover>a {
+    color: #EF008E;
+    opacity: 1;
+}
+
+/* footer */
+
+.page-footer {
+    background-color: rgba(37, 7, 46, .1);
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.social-links__link {
+    display: block;
+    color: #EF008E;
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.8;
+    padding: 5px;
+}
+
+.social-links__item:hover>a {
+    opacity: 1;
+}
+
+/* home */
+
+.band-members {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.band-members__name {
+    font-family: 'Open Sans', sans-serif;
+    color: #D8D8FB;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: left;
+    letter-spacing: 3.8px;
+    visibility: hidden;
+}
+
+.band-members__desc {
+    font-family: 'Open Sans', sans-serif;
+    color: #CCC8FF;
+    font-size: 13px;
+    margin: 0;
+    text-align: left;
+    letter-spacing: 3.5px;
+    opacity: 0.5;
+    visibility: hidden;
+}
+
+.band-members__item>img {
+    opacity: 0.6;
+    transition: opacity .5s;
+}
+
+.band-members__item:hover>.band-members__name,
+.band-members__item:hover>.band-members__desc {
+    visibility: visible;
+}
+
+.band-members__item:hover>img {
+    opacity: 1;
+}
+
+/* about */
+
+.content-section__header {
+    font-family: 'Open Sans', sans-serif;
+    color: #EF008E;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 56px;
+    letter-spacing: 4.5px;
+}
+
+#about.content-section.about-section>img {
+    max-width: 70%;
+    height: auto;
+    border-top: 3px solid #EF008E;
+}
+
+#about.content-section.about-section {
+    position: relative;
+}
+
+.about-section__desc {
+    position: relative;
+    width: 375px;
+    height: 375px;
+    bottom: 280px;
+    left: 120px;
+    background-color: #25072E;
+    padding: 40px 30px;
+    border-bottom: 3px solid #EF008E;
+}
+
+.about-section__desc-header {
+    font-family: 'Open Sans', sans-serif;
+    color: #D8D8FB;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 3.8px;
+    padding-bottom: 20px;
+}
+
+.about-section__desc-details {
+    font-family: 'Open Sans', sans-serif;
+    color: #CCC8FF;
+    font-size: 13px;
+    text-align: left;
+    letter-spacing: 1.5px;
+}
+
+/* concerts */
+
+.concerts {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 300px 300px;
+    grid-gap: 60px 40px;
+    justify-content: end;
+}
+
+.concerts__image {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 3px solid #EF008E;
+}
+
+.concerts__info {
+    display: grid;
+    grid-template-columns: 250px 150px;
+    grid-template-rows: 30px 30px;
+    grid-template-areas:
+        "date btn"
+        "location btn";
+}
+
+.concerts__date {
+    justify-self: start;
+    align-self: start;
+    font-family: 'Open Sans', sans-serif;
+    color: #D8D8FB;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3.8px;
+    grid-area: date;
+}
+
+.concerts__location {
+    justify-self: start;
+    align-self: end;
+    font-family: 'Open Sans', sans-serif;
+    color: #CCC8FF;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 3.5px;
+    grid-area: location;
+}
+
+.button {
+    justify-self: end;
+    align-self: center;
+    background-color: rgba(204, 200, 255, .1);
+    font-family: 'Open Sans', sans-serif;
+    color: #D8D8FB;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    border: none;
+    grid-area: btn;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* video */
+
+#video.content-section>iframe {
+    border-top: 3px solid #EF008E;
+    width: 900px;
+    height: 500px;
+}
+
+/* photos */
+
+.gallery {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 200px 200px 200px;
+    grid-gap: 20px 20px;
+    justify-content: end;
+}
+
+.gallery__item>.gallery__image {
+    max-width: 100%;
+    height: auto;
+    border-top: 3px solid #EF008E;
+    transition: transform .5s;
+}
+
+.gallery__item:hover>.gallery__image {
+    transform: scale(1.1);
+}
+
+/* contact */
+
+#contact.content-section {
+    display: grid;
+    grid-template-columns: 500px 400px;
+    grid-template-rows: 100px 300px 250px;
+    grid-template-areas:
+        "headline headline"
+        "photo contact"
+        "form .";
+    justify-content: end;
+}
+
+.content-section__header {
+    grid-area: headline;
+}
+
+.content-section__header>.gallery__image {
+    grid-area: photo;
+}
+
+address {
+    justify-self: center;
+    align-self: center;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    color: #CCC8FF;
+    font-size: 13px;
+    font-style: normal;
+    letter-spacing: 1.5px;
+    grid-area: contact;
+}
+
+form {
+    justify-self: start;
+    align-self: end;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    color: #CCC8FF;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 1.5px;
+    grid-area: form;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__field>button {
+    width: 40%;
+    margin-top: 20px;
+    align-self: start;
+}
+
+.form__label {
+    padding: 10px 0;
+}
+
+.form__input {
+    background-color: rgba(204, 200, 255, .1);
+    height: 35px;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+}
