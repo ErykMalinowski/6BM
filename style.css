@@ -446,12 +446,12 @@ SEKCJA "CONTACT"
 }
 
 /*
-######################################
-MOBILE - 360x640px
-######################################
+#####################################
+SMARTPHONES & LOW RESOLUTION TABLETS
+#####################################
 */
 
-@media (max-width: 360px) and (orientation: portrait) {
+@media (min-width: 320px) and (max-width: 480px) {
 
     /* GŁÓWNY LAYOUT */
 
@@ -513,7 +513,7 @@ MOBILE - 360x640px
 
     .about__desc {
         position: static;
-        width: 360px;
+        width: 100%;
     }
 
     /* SEKCJA CONCERTS */
@@ -538,15 +538,21 @@ MOBILE - 360x640px
     /* SEKCJA VIDEO */
 
     .embedded-video {
-        width: 360px;
+        width: 100%;
     }
 
     /* SEKCJA PHOTOS */
 
     .gallery {
-        width: 90%;
+        width: 80%;
         display: flex;
         flex-direction: column;
+    }
+
+    .gallery__item:nth-child(4),
+    .gallery__item:nth-child(5),
+    .gallery__item:nth-child(6) {
+        padding: 0;
     }
 
     .gallery>.gallery__item {
@@ -558,14 +564,14 @@ MOBILE - 360x640px
         padding: 0;
     }
 
-    /* @supports (display: grid) {
+    @supports (display: grid) {
         .gallery {
-            width: 90%;
+            width: 80%;
             display: grid;
             grid-template-columns: 1fr;
             gap: 0;
         }
-    } */
+    }
 
     /* SEKCJA CONTACT */
 
@@ -609,7 +615,7 @@ MOBILE - 360x640px
     }
 }
 
-@media (max-width: 640px) and (orientation: landscape) {
+@media (min-width: 481px) and (max-width: 823px) {
 
     /* GŁÓWNY LAYOUT */
 
@@ -656,7 +662,7 @@ MOBILE - 360x640px
     .band-members {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 
     .band-members__item {
@@ -673,7 +679,7 @@ MOBILE - 360x640px
 
     .about__desc {
         position: static;
-        width: 540px;
+        width: 100%;
     }
 
     /* SEKCJA CONCERTS */
@@ -681,31 +687,37 @@ MOBILE - 360x640px
     .concerts {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .concerts__info {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
 
     .concerts__info-base {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     /* SEKCJA VIDEO */
 
     .embedded-video {
-        width: 640px;
+        width: 100%;
     }
 
     /* SEKCJA PHOTOS */
 
     .gallery {
-        width: 100%;
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .gallery__item {
+        width: calc(50% - 15px);
     }
 
     .gallery__item:nth-child(4),
@@ -715,26 +727,24 @@ MOBILE - 360x640px
     }
 
     .gallery>.gallery__item {
-        width: 50%;
         padding: 10px;
     }
 
     @supports (display: grid) {
         .gallery {
-            width: 100%;
+            width: 80%;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0;
+            gap: 20px;
+        }
+
+        .gallery__item {
+            width: 100%;
         }
 
         .gallery__item:nth-child(4),
         .gallery__item:nth-child(5),
         .gallery__item:nth-child(6) {
-            padding: 0;
-        }
-
-        .gallery>.gallery__item {
-            width: 100%;
             padding: 10px;
         }
     }
@@ -750,6 +760,346 @@ MOBILE - 360x640px
         font-weight: bold;
         padding: 50px 0 20px 0;
         letter-spacing: 1.5px;
+    }
+
+    /* PRZYCISKI */
+
+    .button {
+        padding: 10px 25px;
+    }
+
+
+    .button--contact {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* SOCIAL MEDIA */
+
+    .social-links {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .social-links__item+.social-links__item {
+        margin-top: 0;
+    }
+
+    .social-links__img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/*
+##########################
+Tablets, Ipads (landscape)
+##########################
+*/
+
+@media (min-width: 824px) and (max-width: 1024px) and (orientation: landscape) {
+
+    /* LOGO i NAWIGACJA */
+
+    .page-navigation__link {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* STYLE WSPÓLNE DLA WSZYSTKICH SEKCJI */
+
+    .content-section {
+        align-items: center;
+        padding-top: 25px;
+        padding-bottom: 50px;
+    }
+
+    /* SEKCJA HOME */
+
+    .band-members {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .band-members__item {
+        padding-bottom: 25px;
+    }
+
+    /* SEKCJA ABOUT */
+
+    .about {
+        position: static;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .about__desc {
+        position: static;
+        width: 100%;
+    }
+
+    .about__desc-header {
+        font-size: 20px;
+    }
+
+    .about__desc-content {
+        font-size: 16px;
+    }
+
+    /* SEKCJA CONCERTS */
+
+    .concerts {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .concerts__date {
+        font-size: 20px;
+    }
+
+    .concerts__location {
+        font-size: 16px;
+    }
+
+    /* SEKCJA VIDEO */
+
+    .embedded-video {
+        width: 100%;
+    }
+
+    /* SEKCJA PHOTOS */
+
+    .gallery {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .gallery__item {
+        width: calc(50% - 15px);
+    }
+
+    .gallery__item:nth-child(4),
+    .gallery__item:nth-child(5),
+    .gallery__item:nth-child(6) {
+        padding: 0;
+    }
+
+    .gallery>.gallery__item {
+        padding: 10px;
+    }
+
+    @supports (display: grid) {
+        .gallery {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery__item {
+            width: 100%;
+        }
+
+        .gallery__item:nth-child(4),
+        .gallery__item:nth-child(5),
+        .gallery__item:nth-child(6) {
+            padding: 10px;
+        }
+    }
+
+    /* SEKCJA CONTACT */
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact__address {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 50px 0 20px 0;
+        letter-spacing: 1.5px;
+    }
+
+    /* PRZYCISKI */
+
+    .button {
+        padding: 15px 35px;
+        font-size: 15px;
+    }
+
+
+    .button--contact {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* SOCIAL MEDIA */
+
+    .social-links__img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/*
+##########################
+Tablets, Ipads (portrait)
+##########################
+*/
+
+@media (min-width: 824px) and (max-width: 1023px) and (orientation: portrait) {
+
+    /* GŁÓWNY LAYOUT */
+
+    .page-header {
+        position: static;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .page-footer {
+        position: static;
+        padding: 100px 50px 50px 50px;
+    }
+
+    .page-content {
+        margin-left: 0;
+    }
+
+    /* LOGO i NAWIGACJA */
+
+    .page-brand {
+        text-align: center;
+    }
+
+    .page-navigation__item {
+        text-align: center;
+    }
+
+    .page-navigation__link {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    /* STYLE WSPÓLNE DLA WSZYSTKICH SEKCJI */
+
+    .content-section {
+        align-items: center;
+    }
+
+    /* SEKCJA HOME */
+
+    .band-members {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .band-members__item {
+        padding-bottom: 25px;
+    }
+
+    /* SEKCJA ABOUT */
+
+    .about {
+        position: static;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .about__desc {
+        position: static;
+        width: 100%;
+    }
+
+    /* SEKCJA CONCERTS */
+
+    .concerts {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .concerts__info {
+        flex-direction: row;
+    }
+
+    .concerts__info-base {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* SEKCJA VIDEO */
+
+    .embedded-video {
+        width: 100%;
+    }
+
+    /* SEKCJA PHOTOS */
+
+    .gallery {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .gallery__item {
+        width: calc(50% - 15px);
+    }
+
+    .gallery__item:nth-child(4),
+    .gallery__item:nth-child(5),
+    .gallery__item:nth-child(6) {
+        padding: 0;
+    }
+
+    .gallery>.gallery__item {
+        padding-bottom: 10px;
+    }
+
+    .gallery__item:last-child {
+        padding: 0;
+    }
+
+    @supports (display: grid) {
+        .gallery {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery__item {
+            width: 100%;
+        }
+
+        .gallery__item:nth-child(4),
+        .gallery__item:nth-child(5),
+        .gallery__item:nth-child(6) {
+            padding: 0;
+        }
+    }
+
+    /* SEKCJA CONTACT */
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact__address {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 35px;
     }
 
     /* PRZYCISKI */
@@ -778,7 +1128,193 @@ MOBILE - 360x640px
     }
 
     .social-links__img {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) and (orientation: portrait) {
+
+    /* GŁÓWNY LAYOUT */
+
+    .page-header {
+        position: static;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .page-footer {
+        position: static;
+        padding: 100px 50px 50px 50px;
+    }
+
+    .page-content {
+        margin-left: 0;
+    }
+
+    /* LOGO i NAWIGACJA */
+
+    .page-brand {
+        text-align: center;
+    }
+
+    .page-navigation__item {
+        text-align: center;
+    }
+
+    .page-navigation__link {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    /* STYLE WSPÓLNE DLA WSZYSTKICH SEKCJI */
+
+    .content-section {
+        align-items: center;
+        min-height: 80vh;
+    }
+
+    /* SEKCJA HOME */
+
+    .band-members {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .band-members__item {
+        padding-bottom: 25px;
+    }
+
+    /* SEKCJA ABOUT */
+
+    .about {
+        position: static;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .about__desc {
+        position: static;
+        width: 100%;
+    }
+
+    .about__desc-header {
+        font-size: 22px;
+    }
+
+    .about__desc-content {
+        font-size: 18px;
+    }
+
+    /* SEKCJA CONCERTS */
+
+    .concerts {
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .concerts__info {
+        flex-direction: row;
+    }
+
+    .concerts__info-base {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* SEKCJA VIDEO */
+
+    .embedded-video {
+        width: 100%;
+    }
+
+    /* SEKCJA PHOTOS */
+
+    .gallery {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .gallery__item {
+        width: calc(50% - 15px);
+    }
+
+    .gallery__item:nth-child(4),
+    .gallery__item:nth-child(5),
+    .gallery__item:nth-child(6) {
+        padding: 0;
+    }
+
+    .gallery>.gallery__item {
+        padding-bottom: 10px;
+    }
+
+    .gallery__item:last-child {
+        padding: 0;
+    }
+
+    @supports (display: grid) {
+        .gallery {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery__item {
+            width: 100%;
+        }
+
+        .gallery__item:nth-child(4),
+        .gallery__item:nth-child(5),
+        .gallery__item:nth-child(6) {
+            padding: 0;
+        }
+    }
+
+    /* SEKCJA CONTACT */
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact__address {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 35px;
+    }
+
+    /* PRZYCISKI */
+
+    .button {
+        padding: 10px 25px;
+    }
+
+
+    .button--contact {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* SOCIAL MEDIA */
+
+    .social-links {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .social-links__item+.social-links__item {
+        margin-top: 0;
+    }
+
+    .social-links__img {
+        width: 60px;
+        height: 60px;
     }
 }
