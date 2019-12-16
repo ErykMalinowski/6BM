@@ -143,16 +143,6 @@ NAWIGACJA
 
 /*
 ######################################
-HAMBURGER
-######################################
-*/
-
-.fas {
-    display: none;
-}
-
-/*
-######################################
 LINKI DO SOCIAL MEDIA
 ######################################
 */
@@ -325,9 +315,71 @@ SEKCJA "PHOTOS"
     margin-left: 20px;
 }
 
+@keyframes img-anim {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.1);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    90% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 .gallery__image {
     width: 100%;
     border-top: 3px solid #EF008E;
+    animation-duration: 1s;
+    cursor: pointer;
+}
+
+@keyframes filter-anim {
+    0% {
+        filter: contrast(100%);
+    }
+
+    10% {
+        filter: contrast(100%);
+    }
+
+    30% {
+        filter: contrast(150%);
+    }
+
+    70% {
+        filter: contrast(150%);
+    }
+
+    90% {
+        filter: contrast(100%);
+    }
+
+    100% {
+        filter: contrast(100%);
+    }
+}
+
+.filter--active {
+    animation-name: filter-anim;
+}
+
+.gallery__image:hover {
+    animation-name: img-anim;
 }
 
 @supports (display: grid) {
@@ -372,6 +424,16 @@ SEKCJA "CONTACT"
     padding-top: 40px;
 }
 
+/*
+######################################
+HAMBURGER MENU
+######################################
+*/
+
+.hamburger {
+    display: none;
+}
+
 
 /* //////////////////////////////// MOBILE STYLES //////////////////////////////// */
 
@@ -413,7 +475,7 @@ SEKCJA "CONTACT"
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 100px;
+        margin-bottom: 64px;
         padding: 24px 24px 0;
     }
 
@@ -433,41 +495,8 @@ SEKCJA "CONTACT"
     ######################################
     */
 
-    .page-navigation {
-        display: none;
-    }
-
     .page-navigation__items {
         text-align: center;
-    }
-
-    /*
-    ######################################
-    HAMBURGER
-    ######################################
-    */
-
-    .page-hamburger {
-        position: absolute;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 40px;
-        line-height: 50px;
-        transition: .3s linear;
-    }
-
-    .fas {
-        color: #EF008E;
-    }
-
-    i.show {
-        display: block;
-    }
-
-    .page-navigation.show {
-        display: block;
-        margin-top: 100px;
     }
 
     /*
@@ -651,5 +680,84 @@ SEKCJA "CONTACT"
     .contact__address {
         padding: 0;
         line-height: 1.77;
+    }
+
+    /*
+    ######################################
+    HAMBURGER MENU
+    ######################################
+    */
+
+    .hamburger {
+        display: inline-block;
+        margin: 50px 0 0 0;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        transition: transform .3s .1s ease-in-out;
+    }
+
+    .hamburger__container {
+        display: inline-block;
+        position: relative;
+        width: 35px;
+        height: 24px;
+    }
+
+    .hamburger__bars {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #EF008E;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background-color .1s .2s ease-in-out;
+    }
+
+    .hamburger__bars:before,
+    .hamburger__bars:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #EF008E;
+        left: 0;
+        transition: transform .2s .2s ease-in-out;
+    }
+
+    .hamburger__bars:before {
+        top: -10px;
+    }
+
+    .hamburger__bars:after {
+        top: 10px;
+    }
+
+    .hamburger--active .hamburger__bars {
+        background-color: transparent;
+    }
+
+    .hamburger--active .hamburger__bars:before {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger--active .hamburger__bars:after {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .hamburger:focus,
+    .hamburger__container:focus {
+        outline: none;
+    }
+
+    .page-navigation {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s linear;
+    }
+
+    .page-navigation--visible {
+        max-height: 195px;
     }
 }

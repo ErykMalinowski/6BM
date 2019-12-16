@@ -1,34 +1,45 @@
-const hamburger = document.querySelector(".page-hamburger");
-const iconHamburger = document.querySelector(".fa-bars");
-const iconX = document.querySelector(".fa-times");
-const nav = document.querySelector(".page-navigation");
+// Show/hide page navigation
+const menuButton = document.querySelector('.hamburger');
 
-hamburger.addEventListener("click", function () {
-    iconHamburger.classList.toggle("show");
-    iconX.classList.toggle("show");
-    nav.classList.toggle("show");
+menuButton.addEventListener('click', (e) => {
+    const pageNavigation = document.querySelector('.page-navigation');
+    pageNavigation.classList.toggle('page-navigation--visible');
+    menuButton.classList.toggle('hamburger--active');
 });
 
-const concertBtns = document.querySelectorAll(".concerts__info>button");
+// Mark ticket as bought
+const concerts = document.querySelector('#concerts');
 
-concertBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        let span = document.createElement("span");
-        span.textContent = "Have fun!";
-        span.style.fontSize = "16px";
-        span.style.fontWeight = "bold";
+concerts.addEventListener('click', (e) => {
+    if (e.target.classList.contains('button--buy-ticket')) {
+        const buyTicketButton = e.target;
+        const haveFunText = document.createElement('p');
+        haveFunText.textContent = 'Have fun!';
 
-        btn.replaceWith(span);
-    });
+        const buttonContainer = buyTicketButton.parentElement;
+        buttonContainer.insertBefore(haveFunText, buyTicketButton);
+        buyTicketButton.remove();
+        // OR
+        // buyTicketButton.replaceWith(haveFunText);
+    }
 });
 
-const form = document.querySelector('form');
+// Log form data
+const contactForm = document.querySelector('.contact__form');
 
-form.addEventListener('submit', (e) => {
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+    const formObject = Object.fromEntries(formData);
+    console.log(formObject);
+});
 
-    console.log(data);
+// Add filter animation
+const images = document.querySelectorAll('.gallery__image');
+
+images.forEach(img => {
+    img.addEventListener("mouseover", () => {
+        img.classList.remove('filter--active');
+        img.classList.add('filter--active');
+    });
 });
