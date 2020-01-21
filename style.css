@@ -471,35 +471,85 @@ HAMBURGER MENU
     display: none;
 }
 
-/* //////////////////////////////// MOBILE STYLES //////////////////////////////// */
+/* //////////////////////////////// MEDIA QUERIES //////////////////////////////// */
 
-@media screen and (max-width: 360px) {
+/*
+######################################
+HOME SECTION
+######################################
+*/
 
-    body {
-        background-image: none;
+@media screen and (max-width: 1400px) {
+    .band-members {
+        flex-wrap: wrap;
     }
 
-    /*
-    ######################################
-    PRZYCISKI
-    ######################################
-    */
+    .band-members__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 1 50%;
+    }
 
-    .button {
+    .band-members__image {
+        padding: 10px;
+        transition: none;
+    }
+
+    .band-members__image:hover {
+        transform: none;
+    }
+
+    .band-members__name,
+    .band-members__desc {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .band-members {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 12px;
+    }
+
+    .band-members__item {
         width: 100%;
-        height: 40px;
+        height: 100%;
     }
 
-    /*
-    ######################################
-    FORMULARZE
-    ######################################
-    */
-
-    .form__input {
-        width: 100%;
+    .band-members__image {
+        width: auto;
+        height: 330px;
+        object-fit: contain;
     }
 
+    .band-members__name,
+    .band-members__desc {
+        display: block;
+        margin: 0;
+        text-align: center;
+        opacity: 1;
+    }
+
+    .band-members__name {
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: .2px;
+    }
+
+    .band-members__desc {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .band-members__image {
+        height: 280px;
+    }
+}
+
+@media screen and (max-width: 700px) {
     /*
     ######################################
     GŁÓWNY LAYOUT STRONY
@@ -511,7 +561,6 @@ HAMBURGER MENU
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 64px;
         padding: 24px 24px 0;
     }
 
@@ -540,9 +589,10 @@ HAMBURGER MENU
     LINKI DO SOCIAL MEDIA
     ######################################
     */
+
     .social-links {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 
     .social-links__item+.social-links__item {
@@ -552,6 +602,144 @@ HAMBURGER MENU
     .social-links__img {
         width: 32px;
         height: 32px;
+    }
+
+    /*
+    ######################################
+    HAMBURGER MENU
+    ######################################
+    */
+
+    .hamburger {
+        display: inline-block;
+        margin: 50px 0 0 0;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        transition: transform .3s .1s ease-in-out;
+    }
+
+    .hamburger__container {
+        display: inline-block;
+        position: relative;
+        width: 35px;
+        height: 24px;
+    }
+
+    .hamburger__bars {
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #EF008E;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background-color .1s .2s ease-in-out;
+    }
+
+    .hamburger__bars:before,
+    .hamburger__bars:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #EF008E;
+        left: 0;
+        transition: transform .2s .2s ease-in-out;
+    }
+
+    .hamburger__bars:before {
+        top: -10px;
+    }
+
+    .hamburger__bars:after {
+        top: 10px;
+    }
+
+    .hamburger--active .hamburger__bars {
+        background-color: transparent;
+    }
+
+    .hamburger--active .hamburger__bars:before {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger--active .hamburger__bars:after {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .hamburger:focus,
+    .hamburger__container:focus {
+        outline: none;
+    }
+
+    .page-navigation {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s linear;
+    }
+
+    .page-navigation--visible {
+        max-height: 195px;
+    }
+}
+
+/*
+######################################
+ABOUT SECTION
+######################################
+*/
+
+@media screen and (max-width: 1400px) {
+    .about__desc {
+        bottom: -200px;
+        width: 350px;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .about__desc {
+        position: initial;
+        left: unset;
+        bottom: unset;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    body {
+        background-image: none;
+    }
+
+    /*
+    ######################################
+    PRZYCISKI
+    ######################################
+    */
+
+    .button {
+        width: 100%;
+        height: 40px;
+    }
+
+    /*
+    ######################################
+    FORMULARZE
+    ######################################
+    */
+
+    .form__input {
+        width: 100%;
     }
 
     /*
@@ -717,84 +905,5 @@ HAMBURGER MENU
     .contact__address {
         padding: 0;
         line-height: 1.77;
-    }
-
-    /*
-    ######################################
-    HAMBURGER MENU
-    ######################################
-    */
-
-    .hamburger {
-        display: inline-block;
-        margin: 50px 0 0 0;
-        padding: 0;
-        border: 0;
-        background-color: transparent;
-        transition: transform .3s .1s ease-in-out;
-    }
-
-    .hamburger__container {
-        display: inline-block;
-        position: relative;
-        width: 35px;
-        height: 24px;
-    }
-
-    .hamburger__bars {
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        background-color: #EF008E;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: background-color .1s .2s ease-in-out;
-    }
-
-    .hamburger__bars:before,
-    .hamburger__bars:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        background-color: #EF008E;
-        left: 0;
-        transition: transform .2s .2s ease-in-out;
-    }
-
-    .hamburger__bars:before {
-        top: -10px;
-    }
-
-    .hamburger__bars:after {
-        top: 10px;
-    }
-
-    .hamburger--active .hamburger__bars {
-        background-color: transparent;
-    }
-
-    .hamburger--active .hamburger__bars:before {
-        transform: translateY(10px) rotate(45deg);
-    }
-
-    .hamburger--active .hamburger__bars:after {
-        transform: translateY(-10px) rotate(-45deg);
-    }
-
-    .hamburger:focus,
-    .hamburger__container:focus {
-        outline: none;
-    }
-
-    .page-navigation {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height .3s linear;
-    }
-
-    .page-navigation--visible {
-        max-height: 195px;
     }
 }
