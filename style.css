@@ -208,6 +208,10 @@ SEKCJA "HOME"
 ######################################
 */
 
+.content-section {
+    margin-bottom: 100px;
+}
+
 .content-section.home-section {
     align-items: center;
 }
@@ -473,13 +477,13 @@ HAMBURGER MENU
 
 /* //////////////////////////////// MEDIA QUERIES //////////////////////////////// */
 
-/*
+@media screen and (max-width: 1400px) {
+
+    /*
 ######################################
 HOME SECTION
 ######################################
 */
-
-@media screen and (max-width: 1400px) {
     .band-members {
         flex-wrap: wrap;
     }
@@ -504,7 +508,113 @@ HOME SECTION
     .band-members__desc {
         margin: 0;
     }
+
+    /*
+######################################
+ABOUT SECTION
+######################################
+*/
+
+    .about__desc {
+        bottom: -200px;
+        width: 350px;
+        padding: 20px;
+    }
+
+    /*
+    ######################################
+    SEKCJA "CONCERTS"
+    ######################################
+    */
+
+    .concerts__date {
+        font-size: 13px;
+    }
+
+    .concerts__location {
+        font-size: 12px;
+    }
 }
+
+@media screen and (max-width: 1300px) {
+    .concerts {
+        width: 90%;
+    }
+
+    .concerts__info {
+        flex-direction: column;
+    }
+
+    .concerts__info-base {
+        text-align: center;
+    }
+
+    .concerts__location {
+        margin-bottom: 10px;
+    }
+
+    .contact {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .contact-section {
+        align-items: center;
+    }
+
+    .contact-section>h2 {
+        align-self: flex-end;
+    }
+}
+
+
+
+@media screen and (max-width: 1200px) {
+
+    /*
+######################################
+ABOUT SECTION
+######################################
+*/
+    .about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .about__desc {
+        position: initial;
+        left: unset;
+        bottom: unset;
+        width: 100%;
+    }
+
+    .embedded-video {
+        width: 95%;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(80% + 20px);
+        margin-top: -20px;
+    }
+
+    .gallery__item {
+        width: calc((100% - 2 * 20px) / 2);
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    @supports (display: grid) {
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
 
 @media screen and (max-width: 1100px) {
     .band-members {
@@ -543,9 +653,57 @@ HOME SECTION
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .content-section {
+        min-height: unset;
+    }
+
+    .concerts {
+        width: 100%;
+    }
+
+    .button {
+        font-size: 11px;
+    }
+}
+
 @media screen and (max-width: 900px) {
+
+    /* HOME */
     .band-members__image {
         height: 280px;
+    }
+
+    /* ABOUT */
+    .page-content {
+        padding: 0 45px;
+    }
+
+    .embedded-video {
+        width: 100%;
+    }
+
+    .photo-section {
+        align-items: center;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(80% + 20px);
+        margin-top: -20px;
+    }
+
+    .gallery__item {
+        width: calc(100% - 20px);
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    @supports (display: grid) {
+        .gallery {
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -571,7 +729,7 @@ HOME SECTION
 
     .page-content {
         margin-left: 0;
-        padding: 0 24px;
+        padding: 0 45px;
     }
 
     /*
@@ -684,38 +842,40 @@ HOME SECTION
     }
 }
 
-/*
-######################################
-ABOUT SECTION
-######################################
-*/
-
-@media screen and (max-width: 1400px) {
-    .about__desc {
-        bottom: -200px;
-        width: 350px;
-        padding: 20px;
+@media screen and (max-width: 600px) {
+    .band-members__image {
+        height: 220px;
     }
-}
 
-@media screen and (max-width: 1200px) {
-    .about {
+    .concerts {
+        width: 100%;
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+    }
+
+    .concerts__info-base {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-left: 0;
-        margin-bottom: 0;
+        margin: 16px;
     }
 
-    .about__desc {
-        position: initial;
-        left: unset;
-        bottom: unset;
-        width: 100%;
+    .concerts__date {
+        font-size: 15px;
+    }
+
+    .concerts__location {
+        font-size: 13px;
+    }
+
+    .button {
+        font-size: 12px;
+        padding: 10px 20px;
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 400px) {
 
     body {
         background-image: none;
@@ -750,7 +910,7 @@ ABOUT SECTION
 
     .content-section {
         align-items: center;
-        min-height: unset;
+        /* min-height: unset; */
         margin-bottom: 64px;
     }
 
@@ -767,6 +927,11 @@ ABOUT SECTION
     SEKCJA "HOME"
     ######################################
     */
+
+    /* HOME */
+    .home-section {
+        margin-top: 50px;
+    }
 
     .band-members {
         display: grid;
@@ -836,10 +1001,6 @@ ABOUT SECTION
         width: 100%;
         grid-template-columns: 1fr;
         row-gap: 32px;
-    }
-
-    .concerts__info {
-        flex-direction: column;
     }
 
     .concerts__info-base {
