@@ -77,7 +77,6 @@ PRZYCISKI
     text-transform: uppercase;
     letter-spacing: 1.6px;
     cursor: pointer;
-
     transition: all .2s linear;
 }
 
@@ -475,15 +474,11 @@ HAMBURGER MENU
     display: none;
 }
 
-/* //////////////////////////////// MEDIA QUERIES //////////////////////////////// */
+/* ################################### MEDIA QUERIES ############################## */
 
 @media screen and (max-width: 1400px) {
 
-    /*
-######################################
-HOME SECTION
-######################################
-*/
+    /* HOME */
     .band-members {
         flex-wrap: wrap;
     }
@@ -509,24 +504,14 @@ HOME SECTION
         margin: 0;
     }
 
-    /*
-######################################
-ABOUT SECTION
-######################################
-*/
-
+    /* ABOUT */
     .about__desc {
         bottom: -200px;
         width: 350px;
         padding: 20px;
     }
 
-    /*
-    ######################################
-    SEKCJA "CONCERTS"
-    ######################################
-    */
-
+    /* CONCERTS */
     .concerts__date {
         font-size: 13px;
     }
@@ -537,6 +522,8 @@ ABOUT SECTION
 }
 
 @media screen and (max-width: 1300px) {
+
+    /* CONCERTS */
     .concerts {
         width: 90%;
     }
@@ -567,15 +554,23 @@ ABOUT SECTION
     }
 }
 
-
-
 @media screen and (max-width: 1200px) {
 
-    /*
-######################################
-ABOUT SECTION
-######################################
-*/
+    h2.content-section__header {
+        width: 100%;
+        text-align: center;
+    }
+
+    h2.content-section__header.screen-reader-only {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    /* ABOUT */
     .about {
         display: flex;
         flex-direction: column;
@@ -591,10 +586,12 @@ ABOUT SECTION
         width: 100%;
     }
 
+    /* VIDEO */
     .embedded-video {
         width: 95%;
     }
 
+    /* PHOTOS */
     .gallery {
         display: flex;
         flex-wrap: wrap;
@@ -617,6 +614,8 @@ ABOUT SECTION
 
 
 @media screen and (max-width: 1100px) {
+
+    /* HOME */
     .band-members {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -658,6 +657,12 @@ ABOUT SECTION
         min-height: unset;
     }
 
+    /* HOME */
+    .content-section.home-section {
+        margin-top: 50px;
+    }
+
+    /* CONCERTS */
     .concerts {
         width: 100%;
     }
@@ -679,10 +684,12 @@ ABOUT SECTION
         padding: 0 45px;
     }
 
+    /* VIDEO */
     .embedded-video {
         width: 100%;
     }
 
+    /* PHOTOS */
     .photo-section {
         align-items: center;
     }
@@ -690,30 +697,32 @@ ABOUT SECTION
     .gallery {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         width: calc(80% + 20px);
         margin-top: -20px;
     }
 
     .gallery__item {
         width: calc(100% - 20px);
-        margin-top: 20px;
-        margin-left: 20px;
+        margin-left: 0;
     }
 
     @supports (display: grid) {
         .gallery {
             grid-template-columns: 1fr;
+            justify-content: center;
         }
+    }
+
+    /* CONTACT */
+    .contact-section>h2 {
+        align-self: center;
     }
 }
 
 @media screen and (max-width: 700px) {
-    /*
-    ######################################
-    GŁÓWNY LAYOUT STRONY
-    ######################################
-    */
 
+    /* GŁÓWNY LAYOUT */
     .page-header {
         position: static;
         display: flex;
@@ -732,22 +741,12 @@ ABOUT SECTION
         padding: 0 45px;
     }
 
-    /*
-    ######################################
-    NAWIGACJA
-    ######################################
-    */
-
+    /* NAWIGACJA */
     .page-navigation__items {
         text-align: center;
     }
 
-    /*
-    ######################################
-    LINKI DO SOCIAL MEDIA
-    ######################################
-    */
-
+    /* LINKI DO SOCIAL MEDIA */
     .social-links {
         display: flex;
         justify-content: space-evenly;
@@ -762,12 +761,7 @@ ABOUT SECTION
         height: 32px;
     }
 
-    /*
-    ######################################
-    HAMBURGER MENU
-    ######################################
-    */
-
+    /* HAMBURGER */
     .hamburger {
         display: inline-block;
         margin: 50px 0 0 0;
@@ -840,13 +834,23 @@ ABOUT SECTION
     .page-navigation--visible {
         max-height: 195px;
     }
+
+    /* CONTACT */
+    .contact__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 600px) {
+
+    /* HOME */
     .band-members__image {
         height: 220px;
     }
 
+    /* CONCERTS */
     .concerts {
         width: 100%;
         grid-template-columns: 1fr;
@@ -881,36 +885,20 @@ ABOUT SECTION
         background-image: none;
     }
 
-    /*
-    ######################################
-    PRZYCISKI
-    ######################################
-    */
-
+    /* PRZYCISKI */
     .button {
         width: 100%;
         height: 40px;
     }
 
-    /*
-    ######################################
-    FORMULARZE
-    ######################################
-    */
-
+    /* FORMULARZE */
     .form__input {
         width: 100%;
     }
 
-    /*
-    ######################################
-    STYLE WSPÓLNE DLA WSZYSTKICH SEKCJI
-    ######################################
-    */
-
+    /* STYLE WSPÓLNE DLA WSZYSTKICH SEKCJI */
     .content-section {
         align-items: center;
-        /* min-height: unset; */
         margin-bottom: 64px;
     }
 
@@ -921,12 +909,6 @@ ABOUT SECTION
     .content-section__body {
         flex-grow: 1;
     }
-
-    /*
-    ######################################
-    SEKCJA "HOME"
-    ######################################
-    */
 
     /* HOME */
     .home-section {
@@ -966,12 +948,7 @@ ABOUT SECTION
         letter-spacing: .2px;
     }
 
-    /*
-    ######################################
-    SEKCJA "ABOUT"
-    ######################################
-    */
-
+    /* ABOUT */
     .about {
         margin: 0;
     }
@@ -991,44 +968,13 @@ ABOUT SECTION
         line-height: 1.5;
     }
 
-    /*
-    ######################################
-    SEKCJA "CONCERTS"
-    ######################################
-    */
-
-    .concerts {
-        width: 100%;
-        grid-template-columns: 1fr;
-        row-gap: 32px;
-    }
-
-    .concerts__info-base {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 16px;
-    }
-
-    /*
-    ######################################
-    SEKCJA "VIDEO"
-    ######################################
-    */
-
+    /* VIDEO */
     .embedded-video {
         width: 100%;
     }
 
-    /*
-    ######################################
-    SEKCJA "PHOTOS"
-    ######################################
-    */
-
+    /* PHOTOS */
     .gallery {
-        display: block;
         width: 100%;
     }
 
@@ -1038,7 +984,6 @@ ABOUT SECTION
 
     @supports (display: grid) {
         .gallery {
-            display: grid;
             grid-template-columns: 1fr;
             gap: 12px;
         }
@@ -1048,15 +993,11 @@ ABOUT SECTION
         }
     }
 
-    /*
-    ######################################
-    SEKCJA "CONTACT"
-    ######################################
-    */
-
+    /* CONTACT */
     .contact__form {
         width: 100%;
         flex-basis: unset;
+        align-items: unset;
     }
 
     .contact__item {
